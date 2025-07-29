@@ -1,4 +1,4 @@
-# model.py
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -10,7 +10,7 @@ class BrainTumorCNN(nn.Module):
         self.pool = nn.MaxPool2d(2, 2)
         self.fc1 = nn.Linear(32 * 56 * 56, 128)
         self.fc2 = nn.Linear(128, 1)
-
+    
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
